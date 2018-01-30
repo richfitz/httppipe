@@ -1,0 +1,12 @@
+Package: httppipe
+Title: HTTP Over Windows Named Pipes
+Version: 0.0.1
+Authors@R: person("Rich", "FitzJohn", email = "rich.fitzjohn@gmail.com", role = c("aut", "cre"))
+Description: Wrapper to allow use of http over named pipes on windows.
+   This is a suport package to isolate most of the really nasty bits from
+   stevedore.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+  curl,
+  reticulate
