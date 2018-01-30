@@ -48,6 +48,18 @@ httppipe <- function(path) {
   }
 }
 
+##' Test httppipe support is available.  This tests that the python
+##' module can be loaded (not that any actual server is running on a
+##' socket or named pipe).  This is designed to be used in packages
+##' that depend on this package as an efficient way of testing if it
+##' can be used.
+##' @title Test if httppipe available
+##' @export
+httppipe_available <- function() {
+  tryCatch(prepare_python(), error = function(e) NULL)
+  !is.null(.httppipe$python)
+}
+
 assert_raw <- function(x, name = deparse(substitute(x)), what = "raw") {
   if (!is.raw(x)) {
     stop(sprintf("'%s' must be %s", name, what), call. = FALSE)

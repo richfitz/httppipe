@@ -15,3 +15,7 @@ test_that("basic use", {
   expect_is(res$headers, "raw")
   expect_silent(curl::parse_headers(res$headers))
 })
+
+test_that("available", {
+  expect_true(httppipe_available())
+})
