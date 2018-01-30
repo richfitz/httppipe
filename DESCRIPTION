@@ -10,3 +10,4 @@ Encoding: UTF-8
 Imports:
   curl,
   reticulate
+Suggests: testthat

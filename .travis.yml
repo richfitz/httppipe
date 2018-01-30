@@ -1,0 +1,21 @@
+language: r
+sudo: required
+cache: packages
+services:
+  - docker
+r_packages:
+  - covr
+before_script:
+  - docker pull hello-world
+  - docker pull alpine
+  - docker pull alpine:3.1
+  - docker pull bfirsh/reticulate-splines
+  - docker pull nginx
+before_install:
+  - pip install numpy requests
+after_success:
+  - Rscript -e 'covr::codecov()'
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
