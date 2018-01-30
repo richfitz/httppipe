@@ -32,13 +32,10 @@ httppipe <- function(path) {
     headers <- as.list(headers) # list required for python marshalling
 
     if (is.null(body)) {
-      data <- NULL
-    } else {
-      assert_raw(data)
-      headers <- c(headers, list("Content-Type" = content_type))
+      assert_raw(body)
     }
 
-    res <- handle$simple_request(method, url, headers, data)
+    res <- handle$simple_request(method, url, headers, body)
 
     res$headers <- charToRaw(res$headers)
     if (res$is_binary) {
