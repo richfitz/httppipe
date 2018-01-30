@@ -2,5 +2,6 @@
 ^\.Rproj\.user$
 \.pyc$
 __pycache__
-^update_web\.R$
+^update_web\.sh$
 ^Makefile$
+^\.travis\.yml$
