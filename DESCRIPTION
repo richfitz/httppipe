@@ -10,7 +10,8 @@ Description: Wrapper to allow use of http over named pipes on windows.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
-  curl,
-  reticulate
-Suggests: testthat
+    reticulate
+Suggests:
+    curl,
+    testthat
 RoxygenNote: 6.0.1
