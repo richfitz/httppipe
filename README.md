@@ -1,5 +1,9 @@
 # httppipe
 
+[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Travis-CI Build Status](https://travis-ci.org/richfitz/httppipe.svg?branch=master)](https://travis-ci.org/richfitz/httppipe)
+[![codecov.io](https://codecov.io/github/richfitz/httppipe/coverage.svg?branch=master)](https://codecov.io/github/richfitz/httppipe?branch=master)
+
 This is a small proof-of-concept to try and get a http client working over Windows named pipes.  I need this in [`stevedore`](https://github.com/richfitz/stevedore) as this is the default configuration of docker on windows.
 
 Ideally this could be done via the `curl` package (so that things would work directly with packages that `curl`/`httr`) but it's not clear that libcurl supports this.
