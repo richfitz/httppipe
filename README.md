@@ -8,4 +8,6 @@ A better bet than this would probably be native named pipe support via some C co
 
 So in the meanttime, this package calls out to the Python code that the python docker SDK uses, via `reticulate`
 
-For compatibility testing, a unix socket connector is included.  This can be removed once the windows support is stable.
+For compatibility testing, a unix socket connector is included.  This may be removed once the windows support is stable (rendering the package a bit empty on non-windows platforms!).
+
+For other approaches to named pipe support from R, the packages `pdbRPC` and `httpuv` both implement some.
