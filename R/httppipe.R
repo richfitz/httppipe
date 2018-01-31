@@ -31,7 +31,7 @@ httppipe <- function(path) {
     url <- paste0(handle$base_url, path)
     headers <- as.list(headers) # list required for python marshalling
 
-    if (is.null(body)) {
+    if (!is.null(body)) {
       assert_raw(body)
     }
 
