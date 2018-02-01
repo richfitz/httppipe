@@ -21,3 +21,4 @@ addons:
   apt:
     packages:
       - libcurl4-openssl-dev
+      - python3-pip
