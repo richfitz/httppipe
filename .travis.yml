@@ -13,7 +13,7 @@ env:
   -PIP="pip3"
   -RETICULATE_PYTHON=$(which python3)
 before_install:
-  - pip3 install numpy requests
+  - sudo pip3 install numpy requests
 
 after_success:
   - Rscript -e 'covr::codecov()'
