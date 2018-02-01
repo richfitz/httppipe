@@ -7,14 +7,10 @@ r_packages:
   - covr
 before_script:
   - docker pull bfirsh/reticulate-splines
-
 env:
-  -PYTHON=3
-  -PIP="pip3"
-  -RETICULATE_PYTHON=$(which python3)
-before_install:
-  - sudo pip3 install numpy requests
-
+  - RETICULATE_PYTHON=$(which python3)
+after_install:
+  - Rscript -e 'reticulate::py_config()'
 after_success:
   - Rscript -e 'covr::codecov()'
 addons:
@@ -22,3 +18,5 @@ addons:
     packages:
       - libcurl4-openssl-dev
       - python3-pip
+      - python3-numpy
+      - python3-requests
