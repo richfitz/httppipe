@@ -17,6 +17,7 @@ addons:
   apt:
     packages:
       - libcurl4-openssl-dev
-      - python3-pip
+      - python-numpy
+      - python-requests
       - python3-numpy
       - python3-requests
