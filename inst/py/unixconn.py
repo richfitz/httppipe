@@ -7,7 +7,10 @@ if six.PY3:
 else:
     import httplib
 
-import requests.packages.urllib3 as urllib3
+try:
+    import requests.packages.urllib3 as urllib3
+except ImportError:
+    import urllib3
 
 DEFAULT_NUM_POOLS = 25
 
