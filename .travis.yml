@@ -7,8 +7,14 @@ r_packages:
   - covr
 before_script:
   - docker pull bfirsh/reticulate-splines
+
+env:
+  -PYTHON=3
+  -PIP="pip3"
+  -RETICULATE_PYTHON=$(which python3)
 before_install:
-  - pip install numpy requests
+  - pip3 install numpy requests
+
 after_success:
   - Rscript -e 'covr::codecov()'
 addons:
