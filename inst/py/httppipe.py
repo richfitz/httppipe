@@ -9,6 +9,12 @@ if IS_WINDOWS_PLATFORM:
 else:
     from unixconn import UnixAdapter as HttpAdapter
 
+def string_is_binary(x):
+  try:
+    return x.find('\x00') > 0
+  except TypeError:
+    return False
+
 # Start with the unix socket version because that's fairly easy to get
 # going with and I can test it locally.  Then we can copy over all the
 # bits for the windows support and test that locally there.
@@ -31,9 +37,11 @@ class Transporter(requests.Session):
         headers = '\n'.join(
             ['{}: {}'.format(*i) for i in res.raw.headers.items()])
         content = res.content
-        is_binary = content.find('\x00') > 0
+        is_binary = string_is_binary(content)
         if is_binary:
             content = [ord(i) for i in content]
+        elif type(content) == bytes:
+            content = content.decode("UTF-8")
         return {'url': res.url,
                 'status_code': res.status_code,
                 'headers': headers,
