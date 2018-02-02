@@ -1,7 +1,13 @@
 import requests
 import sys
 
-from unixconn import UnixAdapter
+IS_WINDOWS_PLATFORM = (sys.platform == 'win32')
+
+if IS_WINDOWS_PLATFORM:
+    from .npipeconn import NpipeAdapter as HttpAdapter
+    from .npipesocket import NpipeSocket
+else:
+    from unixconn import UnixAdapter as HttpAdapter
 
 # Start with the unix socket version because that's fairly easy to get
 # going with and I can test it locally.  Then we can copy over all the
@@ -10,7 +16,7 @@ class Transporter(requests.Session):
     def __init__(self, base_url):
         super(Transporter, self).__init__()
         self.base_url = base_url
-        self._custom_adapter = UnixAdapter(base_url)
+        self._custom_adapter = HttpAdapter(base_url)
         self.mount('http://', self._custom_adapter)
         self._unmount('https://')
         self.base_url = 'http://localhost'
