@@ -4,8 +4,8 @@ import sys
 IS_WINDOWS_PLATFORM = (sys.platform == 'win32')
 
 if IS_WINDOWS_PLATFORM:
-    from .npipeconn import NpipeAdapter as HttpAdapter
-    from .npipesocket import NpipeSocket
+    from npipeconn import NpipeAdapter as HttpAdapter
+    from npipesocket import NpipeSocket
 else:
     from unixconn import UnixAdapter as HttpAdapter
 
