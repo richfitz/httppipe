@@ -1,7 +1,3 @@
-## NOTE: using .stevedore for the environment here to keep in line
-## with stevedore where this is used.
-.stevedore <- new.env(parent = emptyenv())
-
 ##' Construct a httppipe connector.  This returns a function that can
 ##' be used to make requests over a unix socket or named pipe
 ##' (depending on the platform).
@@ -65,6 +61,10 @@ httppipe_prepare <- function() {
 
   path_py <- system.file("py", package = "httppipe", mustWork = TRUE)
 
+  ## TODO: on windows we also need to find pypiwin32 which is not
+  ## dragged in by docker - but that is not tested for directly.  And
+  ## we might be in a situation where one python has docker only and
+  ## the other python has pypiwiwn32 only.
   python_set_version("docker")
   python_update_search_path(path_py)
   .stevedore$httppipe <- reticulate::import("httppipe")
@@ -93,13 +93,4 @@ python_update_search_path <- function(path) {
   if (!(path %in% search)) {
     reticulate::py_run_string(sprintf("sys.path.insert(1, '%s')", path))
   }
-}
-
-
-## This would otherwise come from stevedore
-assert_raw <- function(x, name = deparse(substitute(x)), what = "raw") {
-  if (!is.raw(x)) {
-    stop(sprintf("'%s' must be %s", name, what), call. = FALSE)
-  }
-  invisible(x)
 }
