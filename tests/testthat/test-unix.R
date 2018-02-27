@@ -16,6 +16,7 @@ test_that("basic use", {
   expect_silent(curl::parse_headers(res$headers))
 })
 
+
 test_that("post", {
   skip_on_cran()
 
@@ -41,6 +42,7 @@ test_that("post", {
   }
 })
 
+
 test_that("no streaming implemented", {
   skip_on_cran()
 
@@ -60,9 +62,23 @@ test_that("no streaming implemented", {
                "streaming connections not yet implemented")
 })
 
+
 test_that("available", {
+  skip_on_cran()
   expect_true(httppipe_available())
+  with_mock(httppipe_prepare = function() stop("can't load python"), {
+    expect_false(httppipe_available())
+    expect_silent(httppipe_available())
+    expect_message(httppipe_available(TRUE), "can't load python")
+  })
 })
+
+
+test_that("python_locate_version", {
+  expect_error(python_locate_version("nosuchmodule"),
+               "Did not find required python module 'nosuchmodule'")
+})
+
 
 test_that("assert_raw", {
   object <- 1

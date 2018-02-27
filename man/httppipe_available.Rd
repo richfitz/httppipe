@@ -4,7 +4,10 @@
 \alias{httppipe_available}
 \title{Test if httppipe available}
 \usage{
-httppipe_available()
+httppipe_available(verbose = FALSE)
+}
+\arguments{
+\item{verbose}{Print information about failure}
 }
 \description{
 Test httppipe support is available.  This tests that the python

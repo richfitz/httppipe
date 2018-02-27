@@ -6,3 +6,4 @@ __pycache__
 ^Makefile$
 ^\.travis\.yml$
 ^appveyor\.yml$
+^notes\.md$
