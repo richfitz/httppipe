@@ -11,7 +11,7 @@ Ideally this could be done via the `curl` package (so that things would work dir
 
 A better bet than this would probably be native named pipe support via some C code.  But that probably requires some knowledge of the Windows API, and support via that route could be added to this package.
 
-So in the meanttime, this package calls out to the Python code that the python docker SDK uses, via `reticulate`
+So in the meantime, this package calls out to the Python code that the python docker SDK uses, via `reticulate`
 
 For compatibility testing, a unix socket connector is included.  This may be removed once the windows support is stable (rendering the package a bit empty on non-windows platforms!).
 
