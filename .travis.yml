@@ -7,6 +7,8 @@ r_packages:
   - covr
 before_script:
   - docker pull bfirsh/reticulate-splines
+  - sudo pip install -U setuptools
+  - sudo pip install -U docker
 after_success:
   - Rscript -e 'covr::codecov()'
 addons:
