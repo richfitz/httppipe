@@ -66,7 +66,7 @@ test_that("no streaming implemented", {
 test_that("available", {
   skip_on_cran()
   expect_true(httppipe_available())
-  with_mock(httppipe_prepare = function() stop("can't load python"), {
+  mockr::with_mock(httppipe_prepare = function() stop("can't load python"), {
     expect_false(httppipe_available())
     expect_silent(httppipe_available())
     expect_message(httppipe_available(TRUE), "can't load python")
